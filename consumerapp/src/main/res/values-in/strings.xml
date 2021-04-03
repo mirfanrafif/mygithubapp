@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name">Budi</string>
+    <string name="location">Lokasi</string>
+    <string name="follower">128</string>
+    <string name="following">36</string>
+    <string name="username">budiananta</string>
+    <string name="repo">20</string>
+    <string name="search_hint">Cari username...</string>
+    <string name="followers_tab">Pengikut</string>
+    <string name="following_tab">Mengikuti</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="my_favourites">Pengguna Favorit</string>
+    <plurals name="show_data">
+        <item quantity="one">%d pengguna ditemukan</item>
+        <item quantity="other">%d pengguna ditemukan</item>
+    </plurals>
+</resources>
