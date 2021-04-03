@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mirfanrafif.mygithubapp">
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <permission
         android:name="com.mirfanrafif.mygithubapp.READ_DATABASE"
@@ -20,6 +22,9 @@
         android:theme="@style/Theme.MyGithubApp"
         android:usesCleartextTraffic="true">
 
+        <receiver android:name=".jobs.AlarmReceiver"/>
+        <activity android:name=".ui.activities.SettingsActivity" />
+
         <provider
             android:name=".provider.FavouriteProvider"
             android:authorities="com.mirfanrafif.mygithubapp"
@@ -29,7 +34,7 @@
             android:writePermission="com.mirfanrafif.mygithubapp.WRITE_DATABASE" />
 
         <activity android:name=".ui.activities.DetailUserActivity" />
-        <activity android:name=".ui.activities.ListUserActivity">
+        <activity android:name=".ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

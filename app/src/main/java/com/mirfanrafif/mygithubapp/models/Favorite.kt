@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class FavouritesItem (
+data class Favorite (
     var id: Int = 0,
     var login: String? = null,
     var nama: String? = null,

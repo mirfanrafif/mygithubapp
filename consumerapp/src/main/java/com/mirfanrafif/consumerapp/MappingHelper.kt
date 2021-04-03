@@ -1,7 +1,6 @@
-package com.mirfanrafif.mygithubapp.databases
+package com.mirfanrafif.consumerapp
 
 import android.database.Cursor
-import com.mirfanrafif.mygithubapp.models.Favorite
 
 object MappingHelper {
     fun mapCursorToArrayList(notesCursor: Cursor?): ArrayList<Favorite> {

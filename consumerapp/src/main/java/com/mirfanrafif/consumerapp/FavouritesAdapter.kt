@@ -1,14 +1,11 @@
-package com.mirfanrafif.mygithubapp
+package com.mirfanrafif.consumerapp
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.mirfanrafif.mygithubapp.databinding.UserListItemBinding
-import com.mirfanrafif.mygithubapp.models.Favorite
-import com.mirfanrafif.mygithubapp.ui.activities.DetailUserActivity
+import com.mirfanrafif.consumerapp.databinding.UserListItemBinding
 
 class FavouritesAdapter : RecyclerView.Adapter<FavouritesAdapter.FavouritesViewHolder>() {
 
@@ -36,12 +33,6 @@ class FavouritesAdapter : RecyclerView.Adapter<FavouritesAdapter.FavouritesViewH
 
     override fun onBindViewHolder(holder: FavouritesViewHolder, position: Int) {
         holder.bind(listFavourites[position])
-        holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetailUserActivity::class.java)
-            intent.putExtra(DetailUserActivity.EXTRA_ID, listFavourites[position].id)
-            intent.putExtra(DetailUserActivity.EXTRA_USER, listFavourites[position].login)
-            holder.itemView.context.startActivity(intent)
-        }
     }
 
     override fun getItemCount(): Int {

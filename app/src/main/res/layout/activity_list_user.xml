@@ -10,7 +10,7 @@
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.activities.ListUserActivity"
+        tools:context=".ui.activities.MainActivity"
         tools:layout="@layout/fragment_favourites" />
 </LinearLayout>
 

@@ -11,12 +11,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.mirfanrafif.mygithubapp.FavouritesAdapter
 import com.mirfanrafif.mygithubapp.databases.DatabaseContract.FavouriteColumns.Companion.CONTENT_URI
 import com.mirfanrafif.mygithubapp.databases.MappingHelper
 import com.mirfanrafif.mygithubapp.databinding.FragmentFavouritesBinding
-import com.mirfanrafif.mygithubapp.models.FavouritesItem
+import com.mirfanrafif.mygithubapp.models.Favorite
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -57,7 +56,7 @@ class FavouritesFragment : Fragment() {
         if (savedInstanceState == null) {
             loadFavourites()
         }else{
-            savedInstanceState.getParcelableArrayList<FavouritesItem>(EXTRA_STATE)?.also { adapter.setData(it) }
+            savedInstanceState.getParcelableArrayList<Favorite>(EXTRA_STATE)?.also { adapter.setData(it) }
         }
 
         activity?.contentResolver?.registerContentObserver(CONTENT_URI, true, myObserver)

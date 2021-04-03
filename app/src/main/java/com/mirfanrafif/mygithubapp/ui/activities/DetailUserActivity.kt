@@ -12,15 +12,10 @@ import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mirfanrafif.mygithubapp.R
 import com.mirfanrafif.mygithubapp.SectionAdapter
-import com.mirfanrafif.mygithubapp.api.ApiClient
 import com.mirfanrafif.mygithubapp.databases.DatabaseContract
 import com.mirfanrafif.mygithubapp.databases.DatabaseContract.FavouriteColumns.Companion.CONTENT_URI
 import com.mirfanrafif.mygithubapp.databinding.ActivityDetailUserBinding
-import com.mirfanrafif.mygithubapp.models.FavouritesItem
 import com.mirfanrafif.mygithubapp.models.User
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class DetailUserActivity : AppCompatActivity() {
 

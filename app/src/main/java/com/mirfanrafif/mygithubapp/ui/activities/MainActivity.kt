@@ -2,12 +2,15 @@ package com.mirfanrafif.mygithubapp.ui.activities
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
@@ -15,7 +18,7 @@ import com.mirfanrafif.mygithubapp.R
 import com.mirfanrafif.mygithubapp.ui.fragments.FavouritesFragment
 import com.mirfanrafif.mygithubapp.ui.fragments.SearchFragment
 
-class ListUserActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     private lateinit var listUserViewModel: ListUserViewModel
     private lateinit var mFragmentManager: FragmentManager
 
@@ -59,5 +62,12 @@ class ListUserActivity : AppCompatActivity() {
         return true
     }
 
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+            }
+        }
+        return true
+    }
 }
