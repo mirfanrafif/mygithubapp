@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name" translatable="false">MyGithubApp</string>
+    <string name="name">Alex</string>
+    <string name="location">Location</string>
+    <string name="follower">128</string>
+    <string name="following">36</string>
+    <string name="repo">20</string>
+    <string name="username">alex</string>
+    <string name="search_hint">Find username...</string>
+    <string name="followers_tab">Followers</string>
+    <string name="following_tab">Following</string>
+    <string name="welcome">Welcome</string>
+    <plurals name="show_data">
+        <item quantity="one">%d user found</item>
+        <item quantity="other">%d users found</item>
+    </plurals>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="my_favourites">My Favourites</string>
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>
