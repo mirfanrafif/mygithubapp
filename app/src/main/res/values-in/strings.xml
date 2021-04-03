@@ -6,13 +6,20 @@
     <string name="following">36</string>
     <string name="username">budiananta</string>
     <string name="repo">20</string>
-    <string name="search_hint">Cari username...</string>
+    <string name="search_hint">Cari username..</string>
     <string name="followers_tab">Pengikut</string>
     <string name="following_tab">Mengikuti</string>
     <string name="welcome">Selamat Datang</string>
     <string name="my_favourites">Pengguna Favorit</string>
+    <string name="ke_pengaturan_bahasa">Ke Pengaturan Bahasa</string>
     <plurals name="show_data">
         <item quantity="one">%d pengguna ditemukan</item>
         <item quantity="other">%d pengguna ditemukan</item>
     </plurals>
+    <string name="pengaturan_bahasa">Bahasa</string>
+    <string name="go">Pergi</string>
+    <string name="reminder_desc">Mengingatkan untuk buka aplikasi</string>
+    <string name="img_profil_desc">Foto Profil</string>
+    <string name="add_favorite">tambah favorit</string>
+    <string name="pengingat">Pengingat</string>
 </resources>

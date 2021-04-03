@@ -3,14 +3,15 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/pink"
+    android:background="@color/dark_gray"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
+        android:contentDescription="@string/img_profil_desc"
         android:id="@+id/img_detail_avatar"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_username_label"
@@ -21,8 +22,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/username"
+        tools:text="@string/username"
         style="@style/Body"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,11 +34,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/name"
+        tools:text="@string/name"
         android:textSize="20sp"
         android:textStyle="bold"
         style="@style/Title"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_detail_avatar" />
@@ -46,7 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="@string/repo"
+        tools:text="@string/repo"
+        android:textColor="@color/white"
         style="@style/Body"
         app:layout_constraintEnd_toStartOf="@+id/tv_follower_label"
         app:layout_constraintTop_toTopOf="@+id/tv_follower_label" />
@@ -56,10 +59,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/follower"
+        tools:text="@string/follower"
         style="@style/Body"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_location_company_label" />
 
@@ -68,23 +72,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="@string/following"
+        android:textColor="@color/white"
+        tools:text="@string/following"
         style="@style/Body"
         app:layout_constraintStart_toEndOf="@+id/tv_follower_label"
         app:layout_constraintTop_toTopOf="@+id/tv_follower_label" />
 
     <TextView
         android:id="@+id/tv_location_company_label"
+        style="@style/Body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/location"
-        style="@style/Body"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name_label" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_label"
+        tools:text="@string/location" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:contentDescription="@string/add_favorite"
         android:id="@+id/fabFavourites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

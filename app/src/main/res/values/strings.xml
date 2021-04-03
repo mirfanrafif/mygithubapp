@@ -6,7 +6,7 @@
     <string name="following">36</string>
     <string name="repo">20</string>
     <string name="username">alex</string>
-    <string name="search_hint">Find username...</string>
+    <string name="search_hint">Find username..</string>
     <string name="followers_tab">Followers</string>
     <string name="following_tab">Following</string>
     <string name="welcome">Welcome</string>
@@ -14,7 +14,12 @@
         <item quantity="one">%d user found</item>
         <item quantity="other">%d users found</item>
     </plurals>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="my_favourites">My Favourites</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="ke_pengaturan_bahasa">To Language Settings</string>
+    <string name="pengaturan_bahasa">Language</string>
+    <string name="go">Go</string>
+    <string name="reminder_desc">Reminder to open the apps</string>
+    <string name="img_profil_desc">Profile Photos</string>
+    <string name="add_favorite">Add to Favorite</string>
+    <string name="pengingat">Reminder</string>
 </resources>

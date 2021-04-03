@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/Body"
-        android:text="Mengingatkan untuk buka aplikasi"
+        android:text="@string/reminder_desc"
         app:layout_constraintStart_toStartOf="@+id/sw_pengingat"
         app:layout_constraintTop_toBottomOf="@+id/sw_pengingat" />
 
@@ -22,10 +22,38 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="Pengingat"
+        android:text="@string/pengingat"
         android:fontFamily="@font/poppins_semibold"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Title"
+        android:layout_marginTop="16dp"
+        android:text="@string/pengaturan_bahasa"
+        app:layout_constraintStart_toStartOf="@+id/sw_pengingat"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pengingat_desc" />
+
+    <Button
+        android:id="@+id/btnLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/go"
+        app:layout_constraintEnd_toEndOf="@+id/sw_pengingat"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Body"
+        android:text="@string/ke_pengaturan_bahasa"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

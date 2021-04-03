@@ -9,7 +9,6 @@ import com.mirfanrafif.mygithubapp.models.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
 
 class DetailUserViewModel : ViewModel(){
     private val user = MutableLiveData<User>()
@@ -23,12 +22,10 @@ class DetailUserViewModel : ViewModel(){
     fun loadDetail(username: String) {
         ApiClient().getUserService().getUsersByUsername(username).enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
-                val data = response.body()
+                val data = response.body() as User
                 try {
-                    if (data != null) {
-                        user.postValue(data)
-                        Log.d("DetailUserViewModel", "onSuccess: Berhasil mengambil data ${data.login}")
-                    }
+                    user.postValue(data)
+                    Log.d("DetailUserViewModel", "onSuccess: Berhasil mengambil data ${data.login}")
                 }catch (e: Exception) {
                     e.printStackTrace()
                     Log.d("DetailUserViewModel", "onSuccess: gagal ${e.message}")
@@ -48,11 +45,9 @@ class DetailUserViewModel : ViewModel(){
                 call: Call<ArrayList<User>>,
                 response: Response<ArrayList<User>>
             ) {
-                val data = response.body()
+                val data = response.body() as ArrayList<User>
                 try {
-                    if (data != null) {
-                        followers.postValue(data)
-                    }
+                    followers.postValue(data)
                 }catch (e: Exception) {
                     Log.d(TAG, "onSuccess: Gagal ${e.message}")
                 }
@@ -71,11 +66,9 @@ class DetailUserViewModel : ViewModel(){
                 call: Call<ArrayList<User>>,
                 response: Response<ArrayList<User>>
             ) {
-                val data = response.body()
+                val data = response.body() as ArrayList<User>
                 try {
-                    if (data != null) {
-                        following.postValue(data)
-                    }
+                    following.postValue(data)
                 }catch (e: Exception) {
                     Log.d(TAG, "onSuccess: Gagal ${e.message}")
                 }

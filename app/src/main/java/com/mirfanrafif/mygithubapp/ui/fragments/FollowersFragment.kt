@@ -1,23 +1,17 @@
 package com.mirfanrafif.mygithubapp.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mirfanrafif.mygithubapp.ListUserAdapter
 import com.mirfanrafif.mygithubapp.R
-import com.mirfanrafif.mygithubapp.api.ApiClient
 import com.mirfanrafif.mygithubapp.databinding.FragmentFollowersBinding
-import com.mirfanrafif.mygithubapp.models.User
 import com.mirfanrafif.mygithubapp.ui.activities.DetailUserViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.lang.Exception
 
 class FollowersFragment : Fragment() {
 
@@ -34,7 +28,7 @@ class FollowersFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentFollowersBinding.inflate(inflater, container, false)
         return binding.root
@@ -64,12 +58,12 @@ class FollowersFragment : Fragment() {
             }
         }
 
-        viewModel.getFollowers().observe(this, {
+        viewModel.getFollowers().observe(viewLifecycleOwner, {
             followersAdapter.setData(it)
             binding.followersLoading.visibility = View.GONE
         })
 
-        viewModel.getFollowing().observe(this, {
+        viewModel.getFollowing().observe(viewLifecycleOwner, {
             followingAdapter.setData(it)
             binding.followersLoading.visibility = View.GONE
         })

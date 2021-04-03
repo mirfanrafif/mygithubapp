@@ -1,7 +1,10 @@
 package com.mirfanrafif.mygithubapp.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.mirfanrafif.mygithubapp.R
 import com.mirfanrafif.mygithubapp.jobs.AlarmReceiver
@@ -30,6 +33,12 @@ class SettingsActivity : AppCompatActivity() {
                 alarmReceiver.cancelAlarm(this)
             }
             preferences.setReminder(isChecked)
+        }
+
+        val btnSettings = findViewById<Button>(R.id.btnLanguage)
+        btnSettings.setOnClickListener {
+            val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+            startActivity(intent)
         }
     }
 
