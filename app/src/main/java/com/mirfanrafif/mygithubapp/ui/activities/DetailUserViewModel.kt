@@ -22,10 +22,12 @@ class DetailUserViewModel : ViewModel(){
     fun loadDetail(username: String) {
         ApiClient().getUserService().getUsersByUsername(username).enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
-                val data = response.body() as User
+                val data = response.body()
                 try {
-                    user.postValue(data)
-                    Log.d("DetailUserViewModel", "onSuccess: Berhasil mengambil data ${data.login}")
+                    if(data != null) {
+                        user.postValue(data)
+                    }
+                    Log.d("DetailUserViewModel", "onSuccess: Berhasil mengambil data ${data?.login}")
                 }catch (e: Exception) {
                     e.printStackTrace()
                     Log.d("DetailUserViewModel", "onSuccess: gagal ${e.message}")
@@ -45,9 +47,11 @@ class DetailUserViewModel : ViewModel(){
                 call: Call<ArrayList<User>>,
                 response: Response<ArrayList<User>>
             ) {
-                val data = response.body() as ArrayList<User>
+                val data = response.body()
                 try {
-                    followers.postValue(data)
+                    if (data != null){
+                        followers.postValue(data)
+                    }
                 }catch (e: Exception) {
                     Log.d(TAG, "onSuccess: Gagal ${e.message}")
                 }
@@ -66,9 +70,11 @@ class DetailUserViewModel : ViewModel(){
                 call: Call<ArrayList<User>>,
                 response: Response<ArrayList<User>>
             ) {
-                val data = response.body() as ArrayList<User>
+                val data = response.body()
                 try {
-                    following.postValue(data)
+                    if (data != null) {
+                        following.postValue(data)
+                    }
                 }catch (e: Exception) {
                     Log.d(TAG, "onSuccess: Gagal ${e.message}")
                 }
