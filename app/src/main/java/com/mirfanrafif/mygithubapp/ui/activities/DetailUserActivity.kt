@@ -14,7 +14,9 @@ import com.mirfanrafif.mygithubapp.R
 import com.mirfanrafif.mygithubapp.SectionAdapter
 import com.mirfanrafif.mygithubapp.databases.DatabaseContract
 import com.mirfanrafif.mygithubapp.databases.DatabaseContract.FavouriteColumns.Companion.CONTENT_URI
+import com.mirfanrafif.mygithubapp.databases.MappingHelper
 import com.mirfanrafif.mygithubapp.databinding.ActivityDetailUserBinding
+import com.mirfanrafif.mygithubapp.models.Favorite
 import com.mirfanrafif.mygithubapp.models.User
 
 class DetailUserActivity : AppCompatActivity() {
@@ -30,7 +32,9 @@ class DetailUserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailUserBinding
     private var user: User? = null
     private var uriWithId: Uri? = null
-    private var id = 0
+    private var uriWithUsername: Uri? = null
+    private var favorite = Favorite()
+    private var isFavorite = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,26 +46,12 @@ class DetailUserActivity : AppCompatActivity() {
 
         val intent = intent
         val username = intent.getStringExtra(EXTRA_USER) as String
-        id = intent.getIntExtra(EXTRA_ID, 0)
-        Log.d(TAG, "ID : $id")
-        if (id > 0) {
-            uriWithId = Uri.parse("$CONTENT_URI/$id")
-        }
+        uriWithUsername = Uri.parse("$CONTENT_URI/$username")
 
         binding.detailUserLoading.visibility = View.VISIBLE
 
         setData(username)
         initTabLayout(username)
-
-//        set jika sudah favorit
-        if (id > 0) binding.fabFavourites.setImageResource(R.drawable.ic_baseline_favorite_24)
-        binding.fabFavourites.setOnClickListener {
-            when(id) {
-                0 ->  addFavourites()
-                else -> removeFavourites()
-            }
-        }
-
 
         supportActionBar?.elevation = 0f
         supportActionBar?.title = "Detail User"
@@ -78,6 +68,27 @@ class DetailUserActivity : AppCompatActivity() {
 
     private fun setData(username: String) {
         //set data
+        uriWithUsername?.let {
+            val cursor = contentResolver.query(it, null, null, null, null)
+            favorite = MappingHelper.mapCursorToObject(cursor)
+            Log.d("setData", "${favorite.login}")
+            uriWithId = Uri.parse("$CONTENT_URI/${favorite.id}")
+        }
+
+        if (favorite.login != null) isFavorite = true
+        if (isFavorite) {
+            binding.fabFavourites.setImageResource(R.drawable.ic_baseline_favorite_24)
+        } else {
+            binding.fabFavourites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+        }
+        binding.fabFavourites.setOnClickListener {
+            if (isFavorite) {
+                removeFavourites()
+            }else{
+                addFavourites()
+            }
+        }
+
         viewModel.loadDetail(username)
         viewModel.getDetail().observe(this, {
             binding.tvUsernameLabel.text = it.login
@@ -98,9 +109,9 @@ class DetailUserActivity : AppCompatActivity() {
         values.put(DatabaseContract.FavouriteColumns.NAME, user?.name)
         values.put(DatabaseContract.FavouriteColumns.IMAGE_URL, user?.avatar_url)
         binding.fabFavourites.setImageResource(R.drawable.ic_baseline_favorite_24)
+        isFavorite = true
 
         uriWithId = contentResolver.insert(CONTENT_URI, values)
-        id = uriWithId?.lastPathSegment?.toInt()?: 0
         Toast.makeText(this, "Berhasil ditambahkan ke favorit", Toast.LENGTH_LONG).show()
     }
 
@@ -108,7 +119,7 @@ class DetailUserActivity : AppCompatActivity() {
         uriWithId?.let { contentResolver.delete(it, null, null) }
         binding.fabFavourites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
         uriWithId = null
-        id = 0
+        isFavorite = false
         Toast.makeText(this, "Berhasil dihapus dari Favorit", Toast.LENGTH_SHORT).show()
     }
 }

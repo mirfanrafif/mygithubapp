@@ -4,9 +4,11 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import com.mirfanrafif.mygithubapp.databases.DatabaseContract.FavouriteColumns.Companion.LOGIN
 import com.mirfanrafif.mygithubapp.databases.DatabaseContract.FavouriteColumns.Companion.TABLE_NAME
 import com.mirfanrafif.mygithubapp.databases.DatabaseContract.FavouriteColumns.Companion._ID
 import java.sql.SQLException
+import kotlin.math.log
 
 class FavouriteHelper(context: Context) {
     companion object {
@@ -51,6 +53,16 @@ class FavouriteHelper(context: Context) {
             null,
             "$_ID = ?",
             arrayOf(id),
+            null,
+            null,
+            "$_ID ASC")
+    }
+
+    fun search(login: String) : Cursor {
+        return database.query(DATABASE_TABLE,
+            null,
+            "$LOGIN LIKE ?",
+            arrayOf(login),
             null,
             null,
             "$_ID ASC")

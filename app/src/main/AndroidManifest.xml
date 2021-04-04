@@ -22,7 +22,11 @@
         android:theme="@style/Theme.MyGithubApp"
         android:usesCleartextTraffic="true">
 
-        <receiver android:name=".jobs.AlarmReceiver"/>
+        <receiver android:name=".jobs.ReminderReceiver"
+            android:enabled="true"
+            android:exported="true"
+            />
+
         <activity android:name=".ui.activities.SettingsActivity" />
 
         <provider

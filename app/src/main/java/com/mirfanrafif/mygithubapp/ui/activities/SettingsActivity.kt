@@ -7,12 +7,12 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.mirfanrafif.mygithubapp.R
-import com.mirfanrafif.mygithubapp.jobs.AlarmReceiver
+import com.mirfanrafif.mygithubapp.jobs.ReminderReceiver
 import com.mirfanrafif.mygithubapp.preferences.SettingPreferences
 
 class SettingsActivity : AppCompatActivity() {
 
-    private lateinit var alarmReceiver: AlarmReceiver
+    private lateinit var reminderReceiver: ReminderReceiver
     private lateinit var preferences: SettingPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +20,7 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
 
         preferences = SettingPreferences(this)
-        alarmReceiver = AlarmReceiver()
+        reminderReceiver = ReminderReceiver()
 
         val reminder = preferences.getReminder()
 
@@ -28,9 +28,9 @@ class SettingsActivity : AppCompatActivity() {
         swPengingat.isChecked = reminder
         swPengingat.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                alarmReceiver.setRepeatingAlarm(this, "Hei. Ada yang baru nih. Coba cek deh.")
+                reminderReceiver.setRepeatingAlarm(this, "Hei. Ada yang baru nih. Coba cek deh.")
             }else{
-                alarmReceiver.cancelAlarm(this)
+                reminderReceiver.cancelAlarm(this)
             }
             preferences.setReminder(isChecked)
         }

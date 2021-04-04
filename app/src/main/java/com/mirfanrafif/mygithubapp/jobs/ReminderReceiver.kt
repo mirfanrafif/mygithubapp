@@ -15,7 +15,7 @@ import androidx.core.content.ContextCompat
 import com.mirfanrafif.mygithubapp.R
 import java.util.*
 
-class AlarmReceiver: BroadcastReceiver() {
+class ReminderReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val message = intent.getStringExtra("message") as String
         showAlarmNotification(context,
@@ -26,7 +26,7 @@ class AlarmReceiver: BroadcastReceiver() {
 
     fun setRepeatingAlarm(context: Context, message: String) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(context, AlarmReceiver::class.java)
+        val intent = Intent(context, ReminderReceiver::class.java)
         intent.putExtra("message", message)
 
         val calendar = Calendar.getInstance().apply {
@@ -71,7 +71,7 @@ class AlarmReceiver: BroadcastReceiver() {
 
     fun cancelAlarm(context: Context) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(context, AlarmReceiver::class.java)
+        val intent = Intent(context, ReminderReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(context, 100, intent, 0)
         pendingIntent.cancel()
 

@@ -20,13 +20,17 @@ object MappingHelper {
 
     fun mapCursorToObject(notesCursor: Cursor?): Favorite {
         var favourites = Favorite()
-        notesCursor?.apply {
-            moveToFirst()
-            val id = getInt(getColumnIndexOrThrow(DatabaseContract.FavouriteColumns._ID))
-            val title = getString(getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.LOGIN))
-            val description = getString(getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.NAME))
-            val imageUrl = getString(getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.IMAGE_URL))
-            favourites = Favorite(id, title, description, imageUrl)
+        if (notesCursor != null) {
+            if (notesCursor.count > 0) {
+                notesCursor.apply {
+                    moveToFirst()
+                    val id = getInt(getColumnIndexOrThrow(DatabaseContract.FavouriteColumns._ID))
+                    val title = getString(getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.LOGIN))
+                    val description = getString(getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.NAME))
+                    val imageUrl = getString(getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.IMAGE_URL))
+                    favourites = Favorite(id, title, description, imageUrl)
+                }
+            }
         }
         return favourites
     }
